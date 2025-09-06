@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MICROHELP</title>
+  <style>
+    body { font-family: Arial; background: #222; color: #fff; text-align: center; padding: 50px; }
+    #box { background: #333; padding: 20px; border-radius: 10px; max-width: 400px; margin: auto; }
+    button { padding: 10px 20px; margin: 10px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <h2>🔥MICRO HELP🔥</h2>
+    <p>Enter your mood king (1–10):</p>
+    <input type="number" id="mood" min="1" max="10">
+    <button onclick="getQuote()">Get A suggestion</button>
+    <p id="response"></p>
+  </div>
+
+  <script>
+    const quotes = [
+      "Believe in yourself and all that you are.",
+      "Success is the sum of small efforts repeated daily.",
+      "Don’t stop until you’re proud.",
+      "Every day is a second chance.",
+      "Tough times never last, but tough people do."
+    ];
+
+    function getQuote() {
+      let mood = document.getElementById("mood").value;
+      let response = "";
+
+      if (mood <= 3) response = "You seem low… storms make trees take deeper roots.";
+      else if (mood <= 6) response = "Not bad! You're halfway there. Keep climbing!";
+      else if (mood <= 8) response = "Great! You're in a positive zone. Spread the energy!";
+      else response = "Wow! You're unstoppable today!";
+
+      // pick random quote
+      let randomIndex = Math.floor(Math.random() * quotes.length);
+      response += "<br><b>" + quotes[randomIndex] + "</b>";
+
+      document.getElementById("response").innerHTML = response;
+    }
+  </script>
+</body>
+</html>
